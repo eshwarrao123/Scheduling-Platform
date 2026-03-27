@@ -162,8 +162,8 @@ export default function PublicBookingPage({
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     userId: host._id,
-                    name: guestName,
-                    email: guestEmail,
+                    guestName: guestName,
+                    guestEmail: guestEmail,
                     selectedDate: formatDateISO(selectedDate),
                     selectedTime: selectedSlot,
                     timezone: timeZone,

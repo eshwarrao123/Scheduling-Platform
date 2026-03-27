@@ -166,9 +166,9 @@ export default function DashboardPage() {
                                             </div>
                                             <div className="text-right">
                                                 <p className="text-sm text-white/80 font-medium">
-                                                    {new Date(b.selectedDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                                                    {new Date(b.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                                                 </p>
-                                                <p className="text-xs text-white/40">{format12h(b.selectedTime)}</p>
+                                                <p className="text-xs text-white/40">{format12h(b.time)}</p>
                                             </div>
                                         </div>
                                     ))

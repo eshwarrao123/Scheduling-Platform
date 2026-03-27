@@ -20,9 +20,9 @@ export async function POST(req: NextRequest) {
     try {
         await connectToDB();
         const body = await req.json();
-        const { userId, eventId, name, email, selectedDate, selectedTime, timezone, calendarSynced } = body;
+        const { userId, eventId, guestName, guestEmail, selectedDate, selectedTime, timezone, calendarSynced } = body;
 
-        if (!userId || !name || !email || !selectedDate || !selectedTime) {
+        if (!userId || !guestName || !guestEmail || !selectedDate || !selectedTime) {
             return NextResponse.json(
                 { success: false, error: "Missing required fields" },
                 { status: 400 }
@@ -32,10 +32,10 @@ export async function POST(req: NextRequest) {
         const booking = await Booking.create({
             userId,
             eventId,
-            name,
-            email,
-            selectedDate,
-            selectedTime,
+            guestName,
+            guestEmail,
+            date: selectedDate,
+            time: selectedTime,
             timezone,
             calendarSynced,
         });
