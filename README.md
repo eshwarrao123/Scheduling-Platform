@@ -74,19 +74,8 @@ Schedula is a full-stack web-based scheduling platform inspired by Calendly. It 
 ### Deployment
 - Vercel
 
----
 
-## 🏗️ Architecture
 
-app/
- ├── dashboard/
- ├── create-event/
- ├── availability/
- ├── book/[username]/
- ├── api/
-components/
-lib/
-models/
 
 
 
