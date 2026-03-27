@@ -1,0 +1,24 @@
+{
+  "signup": {
+    "success": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWM1N2RkMzRmMzE4MDFmMjc0NTJlZGEiLCJlbWFpbCI6InRlc3RfMTc3NDU1MDQ4MjgxNUBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoidGVzdF8xNzc0NTUwNDgyODE1IiwiaWF0IjoxNzc0NTUwNDgzLCJleHAiOjE3NzUxNTUyODN9.WEtCVtOJgRPndDltxkCa583S48VLGMwVlQ8b-6NCMpw",
+    "user": {
+      "id": "69c57dd34f31801f27452eda",
+      "name": "Tester",
+      "email": "test_1774550482815@example.com",
+      "username": "test_1774550482815"
+    }
+  },
+  "signupStatus": 201,
+  "login": {
+    "success": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWM1N2RkMzRmMzE4MDFmMjc0NTJlZGEiLCJlbWFpbCI6InRlc3RfMTc3NDU1MDQ4MjgxNUBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoidGVzdF8xNzc0NTUwNDgyODE1IiwiaWF0IjoxNzc0NTUwNDgzLCJleHAiOjE3NzUxNTUyODN9.WEtCVtOJgRPndDltxkCa583S48VLGMwVlQ8b-6NCMpw",
+    "user": {
+      "id": "69c57dd34f31801f27452eda",
+      "name": "Tester",
+      "email": "test_1774550482815@example.com",
+      "username": "test_1774550482815"
+    }
+  },
+  "loginStatus": 200
+}
