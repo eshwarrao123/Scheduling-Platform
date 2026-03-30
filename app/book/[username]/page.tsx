@@ -101,7 +101,7 @@ export default function PublicBookingPage({
         setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
     }, []);
 
-    // 1. Fetch host profile
+    // Load host information
     useEffect(() => {
         async function fetchHost() {
             try {
@@ -121,7 +121,7 @@ export default function PublicBookingPage({
         fetchHost();
     }, [username]);
 
-    // 2. Fetch available slots when selectedDate changes
+    // Load available slots for the selected date
     useEffect(() => {
         if (!host) return;
 
@@ -148,7 +148,7 @@ export default function PublicBookingPage({
         fetchSlots();
     }, [selectedDate, host, username]);
 
-    // 3. Handle Booking Submission
+    // Submit booking request
     async function handleBook(e: React.FormEvent) {
         e.preventDefault();
         if (!host || !selectedSlot) return;
@@ -177,7 +177,7 @@ export default function PublicBookingPage({
                 setIsSuccess(true);
             } else {
                 setBookingError(data.error || "Failed to complete booking");
-                // Re-fetch slots in case the slot was snatched by someone else
+                // Refresh slots immediately in case someone else booked it concurrently
                 const reloadRes = await fetch(
                     `/api/users/${username}/slots?date=${formatDateISO(selectedDate)}`
                 );
@@ -192,7 +192,7 @@ export default function PublicBookingPage({
         }
     }
 
-    // ─── Render States ────────────────────────────────────────────────────────
+
     if (isLoadingHost) {
         return (
             <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
@@ -257,7 +257,7 @@ export default function PublicBookingPage({
         );
     }
 
-    // ─── Main Interface ────────────────────────────────────────────────────────
+
     return (
         <div className="min-h-screen bg-[#0a0a0f] py-12 px-4 sm:px-6">
             <div className="max-w-4xl mx-auto rounded-3xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-xl overflow-hidden flex flex-col md:flex-row min-h-[600px] shadow-2xl">

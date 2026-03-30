@@ -8,7 +8,6 @@ interface LoginBody {
     password: string;
 }
 
-// POST /api/auth/login
 export async function POST(request: Request) {
     try {
         await connectToDB();
@@ -16,7 +15,7 @@ export async function POST(request: Request) {
         const body: LoginBody = await request.json();
         const { email, password } = body;
 
-        // 1. Validate fields
+        // Require both fields
         if (!email || !password) {
             return NextResponse.json(
                 { success: false, error: "Email and password are required" },
@@ -24,8 +23,7 @@ export async function POST(request: Request) {
             );
         }
 
-        // 2. Find user. We MUST use .select("+passwordHash") because our Mongoose Schema 
-        // explicitly has `select: false` on the passwordHash field for security!
+        // Fetch user including the hashed password (omitted by default in schema)
         const user = await User.findOne({ email: email.toLowerCase() }).select(
             "+passwordHash"
         );
@@ -37,7 +35,7 @@ export async function POST(request: Request) {
             );
         }
 
-        // 3. Verify password directly using bcrypt.compare
+        // Verify credentials
         const isValid = await verifyPassword(password, user.passwordHash);
 
         if (!isValid) {
@@ -47,14 +45,13 @@ export async function POST(request: Request) {
             );
         }
 
-        // 4. Sign JWT
+        // Issue session token
         const token = signToken({
             userId: user._id.toString(),
             email: user.email,
             username: user.username,
         });
 
-        // 5. Respond with Token and User Data — set cookie for middleware
         const response = NextResponse.json({
             success: true,
             token,
@@ -67,7 +64,7 @@ export async function POST(request: Request) {
             },
         });
 
-        // Set HTTP-only cookie so Next.js middleware can read it
+        // Attach session to HTTP-only cookie
         response.cookies.set("schedula_token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",

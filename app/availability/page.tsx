@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+
 
 type DayOfWeek =
     | "monday"
@@ -23,7 +23,7 @@ interface AvailabilitySlot {
     isActive: boolean;
 }
 
-// ─── Constants ────────────────────────────────────────────────────────────────
+
 
 const DAYS: { key: DayOfWeek; label: string; short: string }[] = [
     { key: "monday", label: "Monday", short: "Mon" },
@@ -50,7 +50,7 @@ function format12h(time: string): string {
     return `${hour}:${mStr} ${suffix}`;
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
+
 
 export default function AvailabilityPage() {
     const router = useRouter();
@@ -58,7 +58,7 @@ export default function AvailabilityPage() {
     const [slots, setSlots] = useState<AvailabilitySlot[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    // Per-day form state: day → { startTime, endTime, enabled }
+    // Map Days of Week to start/end times and toggle state
     const [dayConfig, setDayConfig] = useState<
         Record<DayOfWeek, { startTime: string; endTime: string; enabled: boolean }>
     >(() =>
@@ -72,7 +72,7 @@ export default function AvailabilityPage() {
     const [globalError, setGlobalError] = useState("");
     const [successDay, setSuccessDay] = useState<DayOfWeek | null>(null);
 
-    // ── Fetch existing availability ─────────────────────────────────────────────
+    // Load user's saved availability into local form state
     const fetchSlots = useCallback(async (authToken: string) => {
         try {
             const res = await fetch("/api/availability", {
@@ -108,7 +108,7 @@ export default function AvailabilityPage() {
         fetchSlots(stored);
     }, [router, fetchSlots]);
 
-    // ── Save one day ────────────────────────────────────────────────────────────
+    // Save a specific day's configuration
     async function saveDay(day: DayOfWeek) {
         if (!token) return;
         const { startTime, endTime, enabled } = dayConfig[day];
@@ -148,7 +148,7 @@ export default function AvailabilityPage() {
         }
     }
 
-    // ── Delete one day ──────────────────────────────────────────────────────────
+    // Remove a specific day's configuration
     async function deleteDay(day: DayOfWeek) {
         if (!token) return;
         const slot = slots.find((s) => s.day === day);
@@ -174,7 +174,7 @@ export default function AvailabilityPage() {
         }
     }
 
-    // ─── Render ─────────────────────────────────────────────────────────────────
+
     return (
         <div className="min-h-screen bg-[#0a0a0f]">
             {/* Top bar */}

@@ -3,7 +3,7 @@ import { connectToDB } from "@/lib/mongodb";
 import { verifyToken, extractBearerToken } from "@/lib/auth";
 import Availability from "@/models/Availability";
 
-// ── DELETE /api/availability/[id] — remove a slot (owner only) ────────────────
+// DELETE /api/availability/[id] — remove a slot (owner only)
 export async function DELETE(
     req: NextRequest,
     { params }: { params: Promise<{ id: string }> }
@@ -41,7 +41,7 @@ export async function DELETE(
     }
 }
 
-// ── PATCH /api/availability/[id] — toggle isActive ────────────────────────────
+// PATCH /api/availability/[id] — toggle isActive
 export async function PATCH(
     req: NextRequest,
     { params }: { params: Promise<{ id: string }> }

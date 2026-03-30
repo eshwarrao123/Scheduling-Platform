@@ -3,7 +3,7 @@ import { connectToDB } from "@/lib/mongodb";
 import { verifyToken, extractBearerToken } from "@/lib/auth";
 import Availability from "@/models/Availability";
 
-// ── GET /api/availability — fetch current user's availability ─────────────────
+// GET /api/availability — fetch current user's availability
 export async function GET(req: NextRequest) {
     const token = extractBearerToken(req.headers.get("authorization"));
     const payload = token ? verifyToken(token) : null;
@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
     }
 }
 
-// ── POST /api/availability — upsert a day's availability ─────────────────────
+// POST /api/availability — upsert a day's availability
 export async function POST(req: NextRequest) {
     const token = extractBearerToken(req.headers.get("authorization"));
     const payload = token ? verifyToken(token) : null;

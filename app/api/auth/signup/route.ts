@@ -11,7 +11,6 @@ interface SignupBody {
     timezone?: string;
 }
 
-// POST /api/auth/signup
 export async function POST(request: Request) {
     try {
         await connectToDB();
@@ -19,7 +18,6 @@ export async function POST(request: Request) {
         const body: SignupBody = await request.json();
         const { name, email, username, password, timezone } = body;
 
-        // ── Validate required fields ──────────────────────────────────────────────
         if (!name || !email || !username || !password) {
             return NextResponse.json(
                 { success: false, error: "All fields are required" },
@@ -34,7 +32,7 @@ export async function POST(request: Request) {
             );
         }
 
-        // ── Check uniqueness ──────────────────────────────────────────────────────
+        // Enforce uniqueness for both email and username
         const existingEmail = await User.findOne({ email: email.toLowerCase() });
         if (existingEmail) {
             return NextResponse.json(
@@ -53,7 +51,6 @@ export async function POST(request: Request) {
             );
         }
 
-        // ── Hash password & create user ───────────────────────────────────────────
         const passwordHash = await hashPassword(password);
 
         const user = await User.create({
@@ -64,7 +61,7 @@ export async function POST(request: Request) {
             timezone: timezone || "UTC",
         });
 
-        // ── Sign JWT ──────────────────────────────────────────────────────────────
+        // Create session
         const token = signToken({
             userId: user._id.toString(),
             email: user.email,
