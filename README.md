@@ -112,7 +112,7 @@ Create a `.env.local` file in the root directory:
 
 ```env
 # MongoDB connection
-MONGODB_URI=mongodb+srv://your_user:your_password@your_cluster.mongodb.net/schedula?retryWrites=true&w=majority
+MONGODB_URI=YOUR_MONGODB_URI
 
 # JWT secret
 JWT_SECRET=your_jwt_secret_key
