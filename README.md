@@ -1,65 +1,65 @@
-# 🗓️ Schedula — Smart Scheduling Platform
+# Schedula — Smart Scheduling Platform
 
 Schedula is a full-stack web-based scheduling platform inspired by Calendly. It allows users to manage availability, create events, and share booking links to schedule meetings without back-and-forth communication.
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
 🔗 Live URL: https://scheduling-platform-sgch.vercel.app/
 
 
 ---
 
-## ✨ Features
+## Features
 
-### 🔐 Authentication
+### Authentication
 - User Signup & Login
 - Secure password handling
 - Session management using localStorage
 
 ---
 
-### 📅 Event & Availability Management
+### Event & Availability Management
 - Create custom events (title, duration, description)
 - Set availability slots
 - Manage personal schedule
 
 ---
 
-### 🔗 Public Booking System
+### Public Booking System
 - Unique booking link for each user
 - Guests can view available slots
 - Book meetings easily
 
 ---
 
-### 📌 Booking Management
+### Booking Management
 - Bookings stored in MongoDB
 - Dashboard shows upcoming meetings
 - Prevents double booking
 
 ---
 
-### 🤖 AI Feature (Bonus)
+### AI Feature (Bonus)
 - Generate event descriptions automatically
 - Improves user experience and saves time
 
 ---
 
-### 🌍 Timezone Support
+### Timezone Support
 - Detects user's local timezone
 - Displays time accordingly
 
 ---
 
-### 📥 Calendar Integration (Basic)
+### Calendar Integration (Basic)
 - Generates downloadable `.ics` file
 - Can be added to Google Calendar / Outlook
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - Next.js (App Router)
@@ -81,7 +81,7 @@ Schedula is a full-stack web-based scheduling platform inspired by Calendly. It 
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the repository
 
@@ -139,7 +139,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### 1. Sign up
 
@@ -163,7 +163,7 @@ Anyone can book a slot on your public page.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 schedula/
@@ -182,7 +182,7 @@ schedula/
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Authentication
 - `POST /api/auth/signup` - Create account
@@ -219,7 +219,7 @@ schedula/
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Run tests
 
